@@ -1,23 +1,17 @@
 import { convertArrayToCSV } from 'convert-array-to-csv';
 import * as fs from 'fs';
+import { ISelection } from './interface';
 
 class CreateService {
-  public async createCsv(values: Array<Object>): Promise<string> {
-    if (values.length <= 1 || typeof (values[0]) !== 'object') {
-      throw new Error('Estrutura do CSV naõ aceito');
+  public async createCsv(values: ISelection[]): Promise<string> {
+    if (values.length <= 2) {
+      throw new Error('E esperado no mínimo 3 dados para a criação do CSV');
     }
 
-    const keys = values.map(it => Object.keys(it));
+    const validateInput = values.every(this.validateValues);
 
-    const validateValues = (currentValue: string[]) => {
-      const valdiate = currentValue.filter(it => keys[0].includes(it));
-      return valdiate.length === keys[0].length;
-    };
-
-    const validateKeys = keys.every(validateValues);
-
-    if (!validateKeys) {
-      throw new Error('E esperado chaves exatamente iguais');
+    if (!validateInput) {
+      throw new Error('Por enquanto o csv só e criado quando e passado esses dados \n (nome, numero, posicao)');
     }
 
     this.createCSV(values);
@@ -25,7 +19,12 @@ class CreateService {
     return 'Csv criado com sucesso';
   }
 
-  private async createCSV(value: Object[]) {
+  private validateValues(input: ISelection) {
+    const findinput = [input.nome, input.numero, input.posicao];
+    return !findinput.includes(undefined);
+  };
+
+  private async createCSV(value: ISelection[]) {
     const currentDate = new Date().toLocaleDateString();
     const regext = /[\/]/g;
     const fomattedDate = currentDate.replace(regext, '-');
@@ -35,7 +34,6 @@ class CreateService {
       if (error) throw error;
       console.log('CSV criado com sucesso');
     }));
-
   }
 }
 

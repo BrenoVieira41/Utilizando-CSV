@@ -5,9 +5,8 @@ import ReadService from './ReadService';
 class Controller {
   async CreateCsv(req: Request, res: Response): Promise<any> {
     try {
-      const createService = new CreateService();
-      createService.createCsv(req.body);
-      return res.status(200).send();
+      new CreateService().createCsv(req.body);
+      return res.status(200).send('Csv criado com sucesso');
     } catch (err) {
       return res.status(400).send(err.message);
     }

@@ -1,5 +1,5 @@
-export interface ISelection {
-  numero: number,
-  nome: string,
-  posicao: string,
+export class ISelection {
+  numero: number;
+  nome: string;
+  posicao: string;
 }
