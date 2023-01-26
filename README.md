@@ -1,7 +1,28 @@
-Ideia:
-{
-  Ler CSV: Pegar os dados de um CSV,
-  Criar CSV: Pega os dados em formato de input e cria um CSV com essas informações.
-}
+<h1 align="center">
+<br>
 
-Quando acabar todos os codigos criar uma tabela com todas as melhorias que aprendi sobre esse codigo.
+<p align="center">
+    <b ></b>Utilizador de (CSV) (criação e leitura)</b>
+    <h4 align="center"> Um código simples de criação e leitura de (CSV)</h2>
+</p>
+
+## 🛠 Techs
+  - [Nodejs](https://nodejs.org/en/)
+  - [Typescript](https://www.typescriptlang.org/)
+  - CSV
+
+### Para rodar o código
+
+#### Cloning
+```ps
+  # Clone o repositório utilizando o git
+  $ git clone (https://github.com/BrenoVieira41/Utilizando-CSV.git)
+```
+
+#### :arrow_forward: Executando
+```ps
+  # Para baixar os pacotes
+  $ npm install
+  # Para executar o código
+  $ npm run start:dev
+```
